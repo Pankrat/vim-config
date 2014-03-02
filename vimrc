@@ -8,6 +8,8 @@ filetype indent on
 set t_Co=256
 colorscheme zenburn
 
+set rtp+=~/.vim/
+
 " Set up package manager
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -37,9 +39,11 @@ map ,n :cn<return>
 
 vmap ,o : ! ~/.vim/ReorderImports<return>
 
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
+" Solarized only really looks good in gvim
+if has("gui_running")
+    set background=dark
+    colorscheme solarized
+endif
 
 " Copy & paste from clipboard
 map ,y "+y
@@ -73,11 +77,6 @@ set expandtab
 
 set mouse=a
 
-if version >= 600
-	set foldenable
-	set foldmethod=marker
-endif
-
 set wildignore=*.pyc,build/**
 
 set guioptions-=T
@@ -86,3 +85,6 @@ set guioptions-=L
 set guioptions+=c
 
 set cul
+
+" Highlighting current lines is slow for larger files
+autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > 50000 | set nocul | endif
