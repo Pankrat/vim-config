@@ -24,6 +24,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
+Bundle 'AD7six/vim-independence'
 
 iab pdb import ipdb; ipdb.set_trace()
 
@@ -36,6 +37,10 @@ set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
 set errorformat=%f:%l:\ %m
 map <f5> :make<return><return>:copen<return>
 map ,n :cn<return>
+
+" Recursive search & replace
+map ,* :Ack <C-R><C-W><return>
+map ,r :!find . -type f -print0 \| xargs -0 sed -i 's/<C-R><C-W>/
 
 vmap ,o : ! ~/.vim/ReorderImports<return>
 
@@ -88,3 +93,6 @@ set cul
 
 " Highlighting current lines is slow for larger files
 autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > 50000 | set nocul | endif
+
+" Use pyflakes
+let g:syntastic_python_checkers=['pyflakes']
