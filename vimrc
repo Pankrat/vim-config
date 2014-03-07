@@ -25,6 +25,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'AD7six/vim-independence'
+Bundle 'pydave/AsyncCommand'
 
 iab pdb import ipdb; ipdb.set_trace()
 
@@ -96,3 +97,5 @@ autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > 50000 | set nocu
 
 " Use pyflakes
 let g:syntastic_python_checkers=['pyflakes']
+
+let NERDTreeIgnore=['\.pyc$']
