@@ -29,7 +29,7 @@ Bundle 'pydave/AsyncCommand'
 
 iab pdb import ipdb; ipdb.set_trace()
 
-map <C-f8> :NERDTreeToggle<return>
+noremap <C-f8> :NERDTreeToggle<return>
 map <C-f3> :!ctags -R --python-kinds=-i --exclude=build .<return>
 map <M-]> <C-]>:tjump<return>
 
@@ -40,10 +40,10 @@ map <f5> :make<return><return>:copen<return>
 map ,n :cn<return>
 
 " Recursive search & replace
-map ,* :Ack <C-R><C-W><return>
-map ,r :!find . -type f -print0 \| xargs -0 sed -i 's/<C-R><C-W>/
+map ,* :Ack <cword><return>
+map ,r :!find . -type f -print0 \| xargs -0 sed -i 's/<cword>/
 
-vmap ,o : ! ~/.vim/ReorderImports<return>
+vnoremap ,o : ! ~/.vim/ReorderImports<return>
 
 " Solarized only really looks good in gvim
 if has("gui_running")
@@ -99,3 +99,9 @@ autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > 50000 | set nocu
 let g:syntastic_python_checkers=['pyflakes']
 
 let NERDTreeIgnore=['\.pyc$']
+
+" Window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
