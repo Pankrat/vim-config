@@ -31,7 +31,7 @@ iab pdb import ipdb; ipdb.set_trace()
 
 noremap <C-f8> :NERDTreeToggle<return>
 map <C-f3> :!ctags -R --python-kinds=-i --exclude=build .<return>
-map <M-]> <C-]>:tjump<return>
+map <C-]> <C-]>:tjump<return>
 
 " Pylint
 set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
@@ -105,3 +105,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+inoremap jk <esc>
+
+map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:!nosetests -s --logging-level=ERROR %:<C-r>c".<C-r>f"<cr>
