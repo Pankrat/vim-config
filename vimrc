@@ -109,3 +109,9 @@ nnoremap <C-l> <C-w>l
 inoremap jk <esc>
 
 map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:!nosetests -s --logging-level=ERROR %:<C-r>c".<C-r>f"<cr>
+
+" Retrain fingers
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
