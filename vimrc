@@ -24,8 +24,11 @@ Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 Bundle 'AD7six/vim-independence'
 Bundle 'pydave/AsyncCommand'
+Bundle 'godlygeek/csapprox'
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 iab pdb import ipdb; ipdb.set_trace()
 
@@ -47,6 +50,7 @@ vnoremap ,o : ! ~/.vim/ReorderImports<return>
 
 " Solarized only really looks good in gvim
 if has("gui_running")
+    set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 12
     set background=dark
     colorscheme solarized
 endif
@@ -109,3 +113,6 @@ nnoremap <C-l> <C-w>l
 inoremap jk <esc>
 
 map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:!nosetests -s --logging-level=ERROR %:<C-r>c".<C-r>f"<cr>
+
+" Activate powerline
+set laststatus=2
