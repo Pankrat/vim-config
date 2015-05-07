@@ -104,6 +104,11 @@ let g:syntastic_python_checkers=['pyflakes']
 
 let NERDTreeIgnore=['\.pyc$']
 
+" Faster than ack-grep
+if executable('ag')
+  let g:ackprg = 'ag'
+endif
+
 " Window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
