@@ -67,6 +67,7 @@ autocmd BufWritePre *.sass :%s/\s\+$//e
 autocmd BufWritePre *.js :%s/\s\+$//e
 
 au BufRead,BufNewFile *.scala set filetype=scala
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 set showcmd
 set showmatch
