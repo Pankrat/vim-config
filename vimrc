@@ -29,6 +29,8 @@ Bundle 'AD7six/vim-independence'
 Bundle 'pydave/AsyncCommand'
 Bundle 'godlygeek/csapprox'
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'vim-scripts/po.vim--gray'
+Bundle 'ekalinin/Dockerfile.vim'
 
 iab pdb import ipdb; ipdb.set_trace()
 
@@ -51,13 +53,16 @@ vnoremap ,o : ! ~/.vim/ReorderImports<return>
 " Solarized only really looks good in gvim
 if has("gui_running")
     set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 12
-    set background=dark
+    set background=light
     colorscheme solarized
 endif
 
 " Copy & paste from clipboard
 map ,y "+y
 map ,p "+p
+
+" Highlight non-ascii characters
+map ,h /[^\x00-\x7F]<return>
 
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.html :%s/\s\+$//e
