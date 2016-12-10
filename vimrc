@@ -46,7 +46,7 @@ map ,n :cn<return>
 
 " Recursive search & replace
 map ,* :Ack <cword><return>
-map ,r :!find . -type f -print0 \| xargs -0 sed -i 's/<cword>/
+map ,r :!git ls-files -z \| xargs -0 sed -i 's/<cword>/
 
 vnoremap ,o : ! ~/.vim/ReorderImports<return>
 
