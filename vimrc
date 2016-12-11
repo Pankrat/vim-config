@@ -35,7 +35,7 @@ Bundle 'ekalinin/Dockerfile.vim'
 iab pdb import ipdb; ipdb.set_trace()
 
 noremap <C-f8> :NERDTreeToggle<return>
-map <C-f3> :!ctags -R --python-kinds=-i --exclude=build .<return>
+map <C-f3> :!$(ctags -R --python-kinds=-i --exclude=build . > /dev/null &)<return><return>
 map <C-]> <C-]>:tjump<return>
 
 " Pylint
@@ -107,6 +107,7 @@ autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > 50000 | set nocu
 
 " Use pyflakes
 let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_always_populate_loc_list = 1
 
 let NERDTreeIgnore=['\.pyc$']
 
