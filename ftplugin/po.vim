@@ -1,0 +1,1 @@
+../bundle/po.vim--gray/ftplugin/po.vim

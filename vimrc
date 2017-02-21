@@ -10,27 +10,24 @@ colorscheme zenburn
 
 set rtp+=~/.vim/
 
-" Set up package manager
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
 " Add extensions
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'ervandew/supertab'
-Bundle 'jimenezrick/vimerl'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'AD7six/vim-independence'
-Bundle 'pydave/AsyncCommand'
-Bundle 'godlygeek/csapprox'
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'vim-scripts/po.vim--gray'
-Bundle 'ekalinin/Dockerfile.vim'
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'ervandew/supertab'
+Plug 'jimenezrick/vimerl'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'AD7six/vim-independence'
+Plug 'pydave/AsyncCommand'
+Plug 'godlygeek/csapprox'
+Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-scripts/po.vim--gray'
+Plug 'ekalinin/Dockerfile.vim'
+call plug#end()
 
 iab pdb import ipdb; ipdb.set_trace()
 
