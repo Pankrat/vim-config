@@ -22,7 +22,7 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'AD7six/vim-independence'
@@ -31,6 +31,7 @@ Bundle 'godlygeek/csapprox'
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'vim-scripts/po.vim--gray'
 Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'maralla/validator.vim'
 
 iab pdb import ipdb; ipdb.set_trace()
 
@@ -43,6 +44,12 @@ set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
 set errorformat=%f:%l:\ %m
 map <f5> :make<return><return>:copen<return>
 map ,n :cn<return>
+
+" Validator
+let g:validator_auto_open_quickfix = 1
+let g:validator_permament_sign = 1
+let g:validator_error_msg_format = "[ ● %d/%d issues ]"
+let g:validator_python_flake8_args = '--max-line-length=120'
 
 " Recursive search & replace
 map ,* :Ack <cword><return>
