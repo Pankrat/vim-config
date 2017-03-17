@@ -6,7 +6,7 @@ filetype plugin on
 filetype indent on
 
 set t_Co=256
-colorscheme zenburn
+colorscheme autumnleaf
 
 set rtp+=~/.vim/
 
@@ -27,6 +27,8 @@ Plug 'godlygeek/csapprox'
 Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'vim-scripts/po.vim--gray'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 iab pdb import ipdb; ipdb.set_trace()
@@ -34,6 +36,11 @@ iab pdb import ipdb; ipdb.set_trace()
 noremap <C-f8> :NERDTreeToggle<return>
 map <C-f3> :!$(ctags -R --python-kinds=-i --exclude=build . > /dev/null &)<return><return>
 map <C-]> <C-]>:tjump<return>
+
+" FZF mappings
+noremap ,g :GFiles<return>
+noremap ,f :Files<return>
+noremap ,b :Buffers<return>
 
 " Pylint
 set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
