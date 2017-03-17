@@ -6,13 +6,12 @@ filetype plugin on
 filetype indent on
 
 set t_Co=256
-colorscheme autumnleaf
-
 set rtp+=~/.vim/
 
 " Add extensions
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'ervandew/supertab'
 Plug 'jimenezrick/vimerl'
 Plug 'kien/ctrlp.vim'
@@ -30,6 +29,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
 Plug 'junegunn/fzf.vim'
 call plug#end()
+
 
 iab pdb import ipdb; ipdb.set_trace()
 
@@ -53,6 +53,20 @@ map ,* :Ack <cword><return>
 map ,r :!find . -type f -print0 \| xargs -0 sed -i 's/<cword>/
 
 vnoremap ,o : ! ~/.vim/ReorderImports<return>
+
+" Switch to dark theme at night
+function SetBackground(timer)
+    if strftime("%H") >= 8 && strftime("%H") < 18
+        set background=light
+    else
+        set background=dark
+    endif
+endfunction
+
+call SetBackground('')
+colorscheme PaperColor
+
+call timer_start(30*60*1000, 'SetBackground', {'repeat': -1})
 
 " Solarized only really looks good in gvim
 if has("gui_running")
