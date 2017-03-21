@@ -14,7 +14,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ervandew/supertab'
 Plug 'jimenezrick/vimerl'
-Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
@@ -38,6 +37,7 @@ map <C-f3> :!$(ctags -R --python-kinds=-i --exclude=build . > /dev/null &)<retur
 map <C-]> <C-]>:tjump<return>
 
 " FZF mappings
+noremap <C-P> :GFiles<return>
 noremap ,g :GFiles<return>
 noremap ,f :Files<return>
 noremap ,b :Buffers<return>
