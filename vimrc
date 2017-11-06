@@ -56,7 +56,7 @@ vnoremap ,o : ! ~/.vim/ReorderImports<return>
 
 " Switch to dark theme at night
 function SetBackground(timer)
-    if strftime("%H") >= 8 && strftime("%H") < 18
+    if strftime("%H") >= 8 && strftime("%H") < 17
         set background=light
     else
         set background=dark
