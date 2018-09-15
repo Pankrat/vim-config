@@ -27,6 +27,8 @@ Plug 'vim-scripts/po.vim--gray'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
 Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 
@@ -64,7 +66,7 @@ function SetBackground(timer)
 endfunction
 
 call SetBackground('')
-colorscheme PaperColor
+colorscheme gruvbox
 
 call timer_start(30*60*1000, 'SetBackground', {'repeat': -1})
 
