@@ -20,35 +20,29 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'AD7six/vim-independence'
-Plug 'pydave/AsyncCommand'
 Plug 'godlygeek/csapprox'
-Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/po.vim--gray'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
-Plug 'wakatime/vim-wakatime'
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 
-iab pdb import ipdb; ipdb.set_trace()
 
 noremap <C-f8> :NERDTreeToggle<return>
 map <C-f3> :!$(ctags -R --python-kinds=-i --exclude=build . > /dev/null &)<return><return>
 map <C-]> <C-]>:tjump<return>
+
+map ,n :cn<return>
 
 " FZF mappings
 noremap <C-P> :GFiles<return>
 noremap ,g :GFiles<return>
 noremap ,f :Files<return>
 noremap ,b :Buffers<return>
-
-" Pylint
-set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-set errorformat=%f:%l:\ %m
-map <f5> :make<return><return>:copen<return>
-map ,n :cn<return>
 
 " Recursive search & replace
 map ,* :Ack <cword><return>
@@ -66,7 +60,7 @@ function SetBackground(timer)
 endfunction
 
 call SetBackground('')
-colorscheme gruvbox
+colorscheme PaperColor
 
 call timer_start(30*60*1000, 'SetBackground', {'repeat': -1})
 
@@ -126,7 +120,7 @@ set cul
 autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > 50000 | set nocul | endif
 
 " Use pyflakes
-let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_python_checkers=['flake8']
 let g:syntastic_always_populate_loc_list = 1
 
 let NERDTreeIgnore=['\.pyc$']
@@ -146,5 +140,6 @@ inoremap jk <esc>
 
 map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:!nosetests -s --logging-level=ERROR %:<C-r>c".<C-r>f"<cr>
 
-" Activate powerline
-set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:asyncrun_status = "stopped"
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
