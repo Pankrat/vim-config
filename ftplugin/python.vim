@@ -12,4 +12,6 @@ iab pdb import ipdb; ipdb.set_trace()
 
 noremap <f5> :AsyncRun -raw django-admin test % --logging-level=ERROR --nologcapture --with-id --with-progressive<cr>
 noremap <C-f5> :!django-admin test % -s --logging-level=ERROR --nologcapture --with-id --with-progressive<cr>
+noremap <M-f5> :AsyncRun -raw django-admin test --failed --logging-level=ERROR --nologcapture --with-id --with-progressive<cr>
+
 let g:asyncrun_open = 8

@@ -33,7 +33,7 @@ call plug#end()
 
 
 noremap <C-f8> :NERDTreeToggle<return>
-map <C-f3> :!$(ctags -R --python-kinds=-i --exclude=build . > /dev/null &)<return><return>
+noremap <C-f3> :AsyncRun ctags -R --python-kinds=-i --exclude=build .<return>
 map <C-]> <C-]>:tjump<return>
 
 map ,n :cn<return>
@@ -52,7 +52,7 @@ vnoremap ,o : ! ~/.vim/ReorderImports<return>
 
 " Switch to dark theme at night
 function SetBackground(timer)
-    if strftime("%H") >= 8 && strftime("%H") < 17
+    if strftime("%H") >= 8 && strftime("%H") < 15
         set background=light
     else
         set background=dark
@@ -123,7 +123,7 @@ autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > 50000 | set nocu
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_always_populate_loc_list = 1
 
-let NERDTreeIgnore=['\.pyc$']
+let NERDTreeIgnore=['\.pyc$', '__pycache__']
 
 " Faster than ack-grep
 if executable('ag')
@@ -143,3 +143,10 @@ map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:!nosetests
 let g:airline_powerline_fonts = 1
 let g:asyncrun_status = "stopped"
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+
+" Run server
+noremap <f6> :AsyncRun -raw django-admin runserver_plus<cr>
+noremap <C-f6> :!django-admin runserver_plus<cr>
+
+noremap <f4> :AsyncStop<cr>
+noremap <C-f4> :AsyncStop!<cr>
