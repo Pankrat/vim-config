@@ -31,8 +31,6 @@ Plug 'morhetz/gruvbox'
 Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
-
-
 noremap <C-f8> :NERDTreeToggle<return>
 noremap <C-f3> :AsyncRun ctags -R --python-kinds=-i --exclude=build .<return>
 map <C-]> <C-]>:tjump<return>
@@ -136,6 +134,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap ,q :q<cr>
 
 " Allow window navigation in terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -146,7 +145,7 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 
 inoremap jk <esc>
 
-map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:!nosetests -s --logging-level=ERROR %:<C-r>c".<C-r>f"<cr>
+map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:terminal django-admin test -s --logging-level=ERROR %:<C-r>c".<C-r>f"<cr>
 
 let g:airline_powerline_fonts = 1
 let g:asyncrun_status = "stopped"
@@ -154,7 +153,7 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 
 " Run server
 noremap <f6> :AsyncRun -raw django-admin runserver_plus<cr>
-noremap <C-f6> :!django-admin runserver_plus<cr>
+noremap <C-f6> :terminal django-admin runserver_plus<cr>
 
 noremap <f4> :AsyncStop<cr>
 noremap <C-f4> :AsyncStop!<cr>

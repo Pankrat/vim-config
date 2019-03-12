@@ -1,1 +1,1 @@
-map <buffer> ,t :exe "!behave -c %:" . line(".")<cr>
+map <buffer> ,t :exe "terminal behave %:" . line(".")<cr>
