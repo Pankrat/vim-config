@@ -29,6 +29,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'xavierd/clang_complete'
 call plug#end()
 
 noremap <C-f8> :NERDTreeToggle<return>
@@ -150,6 +151,8 @@ map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:terminal d
 let g:airline_powerline_fonts = 1
 let g:asyncrun_status = "stopped"
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+
+let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang-8.so.1'
 
 " Run server
 noremap <f6> :AsyncRun -raw django-admin runserver_plus<cr>
