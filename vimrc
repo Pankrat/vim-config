@@ -146,7 +146,7 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 
 inoremap jk <esc>
 
-map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:terminal django-admin test -s --logging-level=ERROR %:<C-r>c".<C-r>f"<cr>
+map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:terminal django-admin test -s --logging-level=ERROR %:"<C-r>c.<C-r>f"<cr>
 
 let g:airline_powerline_fonts = 1
 let g:asyncrun_status = "stopped"
