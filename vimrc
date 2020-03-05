@@ -30,6 +30,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'xavierd/clang_complete'
+Plug 'tpope/vim-sleuth'
 call plug#end()
 
 noremap <C-f8> :NERDTreeToggle<return>
