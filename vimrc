@@ -23,6 +23,7 @@ Plug 'tpope/vim-surround'
 Plug 'AD7six/vim-independence'
 Plug 'godlygeek/csapprox'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/po.vim--gray'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
@@ -53,7 +54,7 @@ vnoremap ,o : ! ~/.vim/ReorderImports<return>
 
 " Switch to dark theme at night
 function SetBackground(timer)
-    if strftime("%H") >= 8 && strftime("%H") < 15
+    if strftime("%H") >= 10 && strftime("%H") < 15
         set background=light
     else
         set background=dark
@@ -145,13 +146,19 @@ tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 
-inoremap jk <esc>
+" Fix arrow keys in terminal mode (https://github.com/vim/vim/issues/2716)
+tnoremap <Esc> <C-W>N
+tnoremap <Esc><Esc> <C-W>N
+set timeout timeoutlen=1000  " Default
+set ttimeout ttimeoutlen=100  " Set by defaults.vim
+
+" inoremap jk <esc>
 
 map ,t :let a=winsaveview()<cr>[mw"fyw[[w"cyw:call winrestview(a)<cr>:terminal django-admin test -s --logging-level=ERROR %:"<C-r>c.<C-r>f"<cr>
 
 let g:airline_powerline_fonts = 1
 let g:asyncrun_status = "stopped"
-let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+" let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
 let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang-8.so.1'
 
